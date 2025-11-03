@@ -26,19 +26,19 @@ do
     read -p "Enter your choice: " n
 
     case $n in
-        0)    echo "Thankyou for using the program"
+        0)    echo -e "\n===== Thankyou for using the program =====\n"
               exit
               ;;
         1)    words=$(wc -w < "$file")
-              echo "Words: $words"
+              echo -e "\n===== Words: $words ======\n"
               ;;
         2)    lines=$(wc -l < "$file")
-              echo "Lines: $lines"
+              echo -e "\n===== Lines: $lines =====\n"
               ;;
         3)    chars=$(wc -m < "$file")
-              echo "Characters: $chars"
+              echo -e "\n====== Characters: $chars =====\n"
               ;;
-        *)    echo "Please enter valid number"
+        *)    echo -e "\n======= Please enter valid number ======\n"
               ;;
         esac
     done
