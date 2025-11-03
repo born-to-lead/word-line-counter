@@ -1,12 +1,12 @@
 #!/bin/bash
 
+echo "Word-Line-Counter"
 # Check if a file name is provided
 if [ $# -ne 1 ]; then
-    echo "Usage: ./project.sh <filename>"
-    exit 1
+    read -p  "Enter file name(with extension): " file
+else
+    file=$1
 fi
-
-file=$1
 
 # Check if the file exists
 if [ ! -f "$file" ]; then
@@ -15,10 +15,30 @@ if [ ! -f "$file" ]; then
 fi
 
 # Count lines, words, and characters
-lines=$(wc -l < "$file")
-words=$(wc -w < "$file")
-chars=$(wc -m < "$file")
 
-echo "Lines: $lines"
-echo "Words: $words"
-echo "Characters: $chars"
+while true
+do
+    echo "What operation do you want to perform?"
+    echo "0. exit"
+    echo "1. Count no. of words"
+    echo "2. Count no. of lines"
+    echo "3. Count no. of characters"
+    read -p "Enter your choice: " n
+
+    case $n in
+        0)    echo "Thankyou for using the program"
+              exit
+              ;;
+        1)    words=$(wc -w < "$file")
+              echo "Words: $words"
+              ;;
+        2)    lines=$(wc -l < "$file")
+              echo "Lines: $lines"
+              ;;
+        3)    chars=$(wc -m < "$file")
+              echo "Characters: $chars"
+              ;;
+        *)    echo "Please enter valid number"
+              ;;
+        esac
+    done
